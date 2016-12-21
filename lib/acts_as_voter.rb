@@ -89,7 +89,7 @@ module ThumbsUp #:nodoc:
         end
         direction = (options[:direction].to_sym == :up)
         # create! does not return the created object
-        v = Vote.new(:vote => direction, :voteable => voteable, :voter => self, :account => voteable.account)
+        v = Vote.new(:vote => direction, :voteable => voteable, :voter => self, :account => self.account)
         v.save!
         v
       end

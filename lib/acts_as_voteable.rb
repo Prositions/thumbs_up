@@ -69,20 +69,20 @@ module ThumbsUp
         self.send(ThumbsUp.configuration[:voteable_relationship_name])
       end
 
-      def votes_for
-        self._votes_on.where(:vote => true).count
+      def votes_for(account)
+        self._votes_on.where(:vote => true, :account => account).count
       end
 
-      def votes_against
-        self._votes_on.where(:vote => false).count
+      def votes_against(account)
+        self._votes_on.where(:vote => false, :account => account).count
       end
 
-      def percent_for
-        (votes_for.to_f * 100 / (self._votes_on.size + 0.0001)).round
+      def percent_for(account)
+        (votes_for(account).to_f * 100 / (self._votes_on.size + 0.0001)).round
       end
 
-      def percent_against
-        (votes_against.to_f * 100 / (self._votes_on.size + 0.0001)).round
+      def percent_against(account)
+        (votes_against(account).to_f * 100 / (self._votes_on.size + 0.0001)).round
       end
 
       # You'll probably want to use this method to display how 'good' a particular voteable

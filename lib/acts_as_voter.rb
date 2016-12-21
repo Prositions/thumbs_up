@@ -62,7 +62,8 @@ module ThumbsUp #:nodoc:
               :voter_id => self.id,
               :voter_type => self.class.base_class.name,
               :voteable_id => voteable.id,
-              :voteable_type => voteable.class.base_class.name
+              :voteable_type => voteable.class.base_class.name,
+              :account => self.account
             ).count
       end
 
@@ -99,7 +100,8 @@ module ThumbsUp #:nodoc:
           :voter_id => self.id,
           :voter_type => self.class.base_class.name,
           :voteable_id => voteable.id,
-          :voteable_type => voteable.class.base_class.name
+          :voteable_type => voteable.class.base_class.name,
+          :account => self.account
         ).map(&:destroy)
       end
 
